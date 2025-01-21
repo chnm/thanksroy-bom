@@ -28,7 +28,11 @@ $userBar = $this->userBar();
         
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Work+Sans:ital,wght@0,300;0,400;1,300&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://deathbynumbers.org/style.css">
+
         
         <style>
             [x-cloak] { display: none !important; }
@@ -42,8 +46,41 @@ $userBar = $this->userBar();
                 --button-color: <?php echo ($buttonColor = $this->themeSetting('button_color')) ? $buttonColor : "#000000"; ?>;
                 --button-text-color: <?php echo ($buttonTextColor = $this->themeSetting('button_text_color')) ? $buttonTextColor : "#FFFFFF"; ?>;
                 --title-color: <?php echo ($titleColor = $this->themeSetting('site_title_color')) ? $titleColor : "#000000"; ?>;
-                --dbn-green: #2F4F2F;
-                --dbn-blue: #3763A6;
+                --dbn-green: rgb(62 62 50);
+                --dbn-blue: rgb(150 173 200);
+            }
+
+            body {
+                background-color: var(--dbn-green);
+            }
+            
+            nav a:link, nav a:visited {
+                color: white;
+            }
+
+            nav a:hover, nav a:active {
+                opacity: 0.75;
+            }
+
+            #subnav {
+                color: var(--dbn-green);
+            }
+
+            .bg-dbn-green {
+                background-color: var(--dbn-green);
+            }
+
+            .text-dbn-blue {
+                color: var(--dbn-blue);
+            }
+
+            #wrap, footer {
+                background-color: white;
+            }
+
+            #site-title {
+            font-size: 1.5rem;
+            font-family: "Libre Baskerville", serif;
             }
         
               <?php if ($themeHeaderBg = $this->themeSettingAssetUrl('header_bg')): ?>
@@ -78,9 +115,9 @@ $userBar = $this->userBar();
                             </svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-cloak class="absolute bg-white text-black mt-2 rounded shadow-lg z-50 min-w-[200px]">
-                            <a href="https://deathbynumbers.org/context/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
+                            <a href="https://deathbynumbers.org/context/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
                             <hr class="border-gray-300" />
-                            <a href="https://github.com/chnm/bom/blob/main/bom-data/2024-12-10-deathdictionary.csv" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Death Dictionary <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                            <a href="https://github.com/chnm/bom/blob/main/bom-data/2024-12-10-deathdictionary.csv" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Death Dictionary <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
                         </div>
                     </div>
 
@@ -93,12 +130,12 @@ $userBar = $this->userBar();
                             </svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-cloak class="absolute bg-white text-black mt-2 rounded shadow-lg z-50 min-w-[200px]">
-                            <a href="https://deathbynumbers.org/data/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
+                            <a href="https://deathbynumbers.org/data/"  id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
                             <hr class="border-gray-300" />
-                            <a href="https://deathbynumbers.org/database/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Database</a>
-                            <a href="https://bom.chnm.org/s/bills-of-mortality/page/welcome" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Images <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
-                            <a href="https://deathbynumbers.org/downloads/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Downloads</a>
-                            <a href="https://deathbynumbers.org/api/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">API</a>
+                            <a href="https://deathbynumbers.org/database/"  id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Database</a>
+                            <a href="https://bom.chnm.org/s/bills-of-mortality/page/welcome" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Images <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                            <a href="https://deathbynumbers.org/downloads/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Downloads</a>
+                            <a href="https://deathbynumbers.org/api/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">API</a>
                         </div>
                     </div>
 
@@ -111,9 +148,9 @@ $userBar = $this->userBar();
                             </svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-cloak class="absolute bg-white text-black mt-2 rounded shadow-lg z-50 min-w-[200px]">
-                            <a href="https://deathbynumbers.org/analysis/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
+                            <a href="https://deathbynumbers.org/analysis/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Overview</a>
                             <hr class="border-gray-300" />
-                            <a href="https://deathbynumbers.org/visualizations/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Data Visualizations</a>
+                            <a href="https://deathbynumbers.org/visualizations/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Data Visualizations</a>
                         </div>
                     </div>
 
@@ -130,10 +167,10 @@ $userBar = $this->userBar();
                             </svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-cloak class="absolute bg-white text-black mt-2 rounded shadow-lg z-50 min-w-[200px]">
-                            <a href="https://deathbynumbers.org/about/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">The Project</a>
+                            <a href="https://deathbynumbers.org/about/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">The Project</a>
                             <hr class="border-gray-300" />
-                            <a href="https://deathbynumbers.org/team/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Project Team</a>
-                            <a href="https://deathbynumbers.org/methodologies/" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Methodologies</a>
+                            <a href="https://deathbynumbers.org/team/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Project Team</a>
+                            <a href="https://deathbynumbers.org/methodologies/" id="subnav" class="text-dbn-green block px-4 py-2 text-sm hover:bg-gray-200">Methodologies</a>
                         </div>
                     </div>
                 </div>
