@@ -54,11 +54,11 @@ $userBar = $this->userBar();
                 background-color: var(--dbn-green);
             }
             
-            nav a:link, nav a:visited {
+            #header_navigation a:link, #header_navigation a:visited {
                 color: white;
             }
 
-            nav a:hover, nav a:active {
+            #header_navigation a:hover, #header_navigation a:active {
                 opacity: 0.75;
             }
 
@@ -97,7 +97,7 @@ $userBar = $this->userBar();
         <a id="skipnav" href="#content"><?php echo $this->translate('Skip to main content'); ?></a>
         <?php echo $userBar; ?>
         
-        <nav class="flex items-center justify-between flex-wrap bg-dbn-green px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md">
+        <nav id="header_navigation" class="flex items-center justify-between flex-wrap bg-dbn-green px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md">
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <img src="https://deathbynumbers.org/img/death-by-numbers.jpg" alt="Death by Numbers" class="object-scale-down w-44 overflow-hidden" />
                 <a id="site-title" class="font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap text-white" href="/">
@@ -189,7 +189,6 @@ $userBar = $this->userBar();
             <div id="content" role="main" tabindex="-1">
                 <?php echo $this->content; ?>
             </div>
-
         </div>
         <footer>
             <?php if ($footerContent = $this->themeSetting('footer')): ?>
