@@ -61,7 +61,7 @@ if (!Omeka) {
             parentToggle.click();
         }
 
-        $('.menu-button').click( function(e) {
+        $('#primary-nav .menu-button').click( function(e) {
             e.preventDefault();
             $('#primary-nav ul.navigation').toggleClass('open');
         });
